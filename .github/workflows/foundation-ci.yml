@@ -1,0 +1,76 @@
+name: Foundation CI
+
+on:
+  push:
+    branches:
+      - feat/vkn-saas-foundation
+      - 'feature/**'
+      - 'fix/**'
+  pull_request:
+    branches:
+      - feat/vkn-saas-foundation
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: foundation-ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    name: Unit contract + lint + typecheck + production build + HTTP smoke
+    # Use GitHub-hosted CI until the org self-hosted runner is confirmed online for this repo (FND-002).
+    # Do not put secrets in this job; external PRs are excluded until the security policy is reviewed.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      CI: 'true'
+      NEXT_TELEMETRY_DISABLED: '1'
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+      - name: Repository contract tests (baseline; E2E tracked by FND-015)
+        run: pnpm test
+      - name: Lint
+        run: pnpm lint
+      - name: Typecheck
+        run: pnpm typecheck
+      - name: Production build
+        run: pnpm build
+      - name: HTTP smoke (public landing page)
+        shell: bash
+        run: |
+          set -euo pipefail
+          pnpm start --port 3000 > /tmp/vkn-foundation-smoke.log 2>&1 &
+          server_pid=$!
+          trap 'kill "$server_pid" 2>/dev/null || true' EXIT
+          ready=0
+          for i in $(seq 1 45); do
+            http_code=$(curl --max-time 3 -s -o /tmp/vkn-foundation-home.html -w '%{http_code}' http://127.0.0.1:3000/ || true)
+            if [ "$http_code" = "200" ] && grep -qi '<html' /tmp/vkn-foundation-home.html; then
+              ready=1
+              break
+            fi
+            sleep 2
+          done
+          if [ "$ready" != "1" ]; then
+            echo "HTTP smoke failed (expected 200 HTML on /)"
+            tail -n 120 /tmp/vkn-foundation-smoke.log || true
+            exit 1
+          fi
+          echo "HTTP smoke passed on /"

@@ -22,3 +22,22 @@ Every module in `config/features.ts` can be deleted for good with `pnpm modules:
 - A new module declares its `files`, `packages` and `routes`.
 
 Check with `pnpm modules:prune <module>`: without `--yes` it only prints what it would delete.
+
+
+# VKN autonomous delivery contract
+
+**Before coding**, read [TODO.md](TODO.md), [Roadmap](docs/ROADMAP.md), [Issue backlog](docs/ISSUE_BACKLOG.md), [SDLC playbook](docs/DEVELOPMENT_WORKFLOW.md), and [Coolify staging](docs/COOLIFY.md).
+
+- Repository: `vietkeynet/next-saas-starter`. Keep `main` stable, do not edit original upstream.
+- Integration branch: `feat/vkn-saas-foundation`. Work on `feature/FND-XXX-slug` based on the latest integration commit; PRs target integration, not `main`.
+- Choose the highest priority unblocked ticket. If GitHub Issues is disabled, use the matching FND ticket in `docs/ISSUE_BACKLOG.md` until enabled.
+- For every change: DISCOVER → PLAN → BUILD → TEST → REVIEW → PR → MERGE integration → VERIFY Coolify commit and URL → UPDATE TODO → NEXT ISSUE.
+- Make functionality real: mock admin, locked Pro previews and sample data never count as feature completion.
+- Use self-hosted PostgreSQL only after checking the environment; never point staging migrations to production.
+- Every user-facing API/Server Action must verify session, tenant membership and role **on the server**. Add positive and negative tests, including cross-tenant access attempts.
+- Follow Next.js 16 and Better Auth authoritative docs; preserve module feature flags, routes, prune markers and MIT license.
+- Execute `pnpm test`, `pnpm lint`, `pnpm typecheck`, `pnpm build`; extend unit/integration/Playwright E2E as required. Record exact outputs and blockers. Do not falsely mark checks green.
+- Coolify staging tracks **only** `feat/vkn-saas-foundation`. A push should trigger GitHub webhook auto-deploy after configured; verify commit SHA, live URL and deployment logs. Never assume a Coolify MCP exists without discovering it.
+- Do not commit tokens or passwords, auto-merge to main, remove project data, change production domains or upgrade production DB without explicit owner approval.
+- PR description uses `.github/pull_request_template.md`. After merged feature PR and verified staging, update `TODO.md`, docs and GitHub issue with evidence.
+- GitHub Issues #1–#16 are enabled; work from an actual linked Issue rather than a backlog placeholder. If blocked (runner offline or Coolify MCP unavailable), report and continue a safe independent item instead of inventing progress.
