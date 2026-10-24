@@ -20,7 +20,7 @@ Reusable, self-hosted Next.js/TypeScript/PostgreSQL starter with three real surf
 ## Prioritized delivery phases
 
 ### M0 — Bootstrap and reproducible preview (P0)
-Tickets: FND-001..004
+Tickets: [FND-001..004](https://github.com/vietkeynet/next-saas-starter/issues?q=is%3Aissue+is%3Aopen+FND-)
 - Audit dependency/security/Free-versus-demo scope and record existing behavior.
 - Stand up trusted push CI: install, static contract tests, lint, typecheck, production build, HTTP smoke; preserve prune CI.
 - Verify isolated Coolify preview from `feat/vkn-saas-foundation`, GitHub webhook on push, per-commit deploy logs and preview URL.
@@ -28,35 +28,35 @@ Tickets: FND-001..004
 **Exit:** clean build and smoke, reproducible migrations, working restricted preview with commit SHA verified. If unavailable, mark blocker; do not declare done.
 
 ### M1 — Identity and operational admin (P1)
-Tickets: FND-005..007
+Tickets: [FND-005..007](https://github.com/vietkeynet/next-saas-starter/issues?q=is%3Aissue+is%3Aopen+FND-)
 - Email/password, verification, password reset, optional OAuth, sessions and anti-abuse.
 - Replace sample admin users with real authorized CRUD, role assignment, ban/unban, filter/pagination and audit.
 - Organizations, invitations, member lifecycle, ownership transfer and team roles.
 **Exit:** end-to-end account onboarding, separate admin/user access, working invite/accept/revoke and tests on at least two organizations.
 
 ### M2 — Security and observability hardening (P1)
-Tickets: FND-008..009
+Tickets: [FND-008..009](https://github.com/vietkeynet/next-saas-starter/issues?q=is%3Aissue+is%3Aopen+FND-)
 - Centralized org-aware policy/RBAC and explicit server guards on routes, actions, APIs, read queries.
 - Data access tests proving user from tenant A cannot access B, including direct URL and forged IDs.
 - Security settings, 2FA, revoke sessions, audit events, rate limits and incident logging.
 **Exit:** negative-authorization integration/E2E suite passes and security review has no unresolved critical/high findings.
 
 ### M3 — Commercial SaaS operations (P2)
-Tickets: FND-010..011
+Tickets: [FND-010..011](https://github.com/vietkeynet/next-saas-starter/issues?q=is%3Aissue+is%3Aopen+FND-)
 - Subscription plans, entitlements, quotas, invoicing state, webhook idempotency; keep Stripe adapter isolated.
 - Prepare optional VN payment gateway abstraction for later approved integration; no fabricated provider credentials.
 - Notifications, email templates, background jobs, API keys and outgoing webhooks with rotation/retry.
 **Exit:** sandbox billing paths tested (success, fail, cancel, duplicate webhook) and feature entitlement enforced server-side.
 
 ### M4 — Website/CMS and application building blocks (P2)
-Tickets: FND-012..014
+Tickets: [FND-012..014](https://github.com/vietkeynet/next-saas-starter/issues?q=is%3Aissue+is%3Aopen+FND-)
 - Admin-managed pages/posts/categories/media, draft/publish, SEO, multilingual VI/EN and role-scoped editing.
 - Object-storage adapter compatible with MinIO/S3; file validation/quota/access control.
 - Reusable CRUD forms, data grids, sorting/filtering, import/export and example tenant-scoped business module.
 **Exit:** admin publishes public page without Git edit; a fresh product module ships with no auth rewrites.
 
 ### M5 — Production readiness, agent automation and release (P0 gate)
-Tickets: FND-015..016
+Tickets: [FND-015..016](https://github.com/vietkeynet/next-saas-starter/issues?q=is%3Aissue+is%3Aopen+FND-)
 - Unit/integration/E2E/performance/security checks, migrations, backup/restore drills, dependency audits.
 - Agent issue-to-PR SOP, CI evidence, Coolify verification, update/upstream sync and maintainers' approval gates.
 **Exit:** preview validated; manual release approval, deployment/rollback runbook, zero open critical/high security issues, and recorded go/no-go.
@@ -73,7 +73,8 @@ Tickets: FND-015..016
 9. Promotion from integration branch to `main` requires explicit review and approval.
 
 ## Management
-- Backlog source of truth while GitHub Issues disabled: `docs/ISSUE_BACKLOG.md`. Once enabled, create issues and replace FND identifiers with GitHub #numbers.
+- GitHub Issues #1–#16 are now open and authoritative for status; `docs/ISSUE_BACKLOG.md` is the detailed durable mirror of acceptance criteria.
+- [Issue tracker](https://github.com/vietkeynet/next-saas-starter/issues) (FND-001 → #1, …, FND-016 → #16).
 - Live execution queue: `TODO.md`; agent operating manual: `docs/DEVELOPMENT_WORKFLOW.md`.
 - Coolify setup and runbook: `docs/COOLIFY.md`.
 - Never assume a Coolify MCP exists in every agent runtime. Discover and verify connectivity before deployment changes.
