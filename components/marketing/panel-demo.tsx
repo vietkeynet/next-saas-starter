@@ -188,10 +188,13 @@ export function PanelDemo() {
     }
     const authPending: Pending = { key: "auth", on: false, change: authOff }
     // Start from the parked spot with no glide, so it never flies in from a corner.
-    if (step === 0) {
-      setSnap(true)
-      park()
-    }
+    // Defer render-state updates until after the effect setup; keep timer cancellable.
+    const parkTimer = step === 0
+      ? setTimeout(() => {
+          setSnap(true)
+          park()
+        }, 0)
+      : undefined
     const scene: SceneStep[] = [
       {
         ms: 500,
@@ -280,7 +283,10 @@ export function PanelDemo() {
       scene[step].run()
       setStep((step + 1) % scene.length)
     }, scene[step].ms)
-    return () => clearTimeout(id)
+    return () => {
+      clearTimeout(id)
+      if (parkTimer !== undefined) clearTimeout(parkTimer)
+    }
   }, [playing, step])
 
   // Any touch hands the demo over; it starts again from scratch once idle.
