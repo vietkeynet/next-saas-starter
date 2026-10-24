@@ -23,7 +23,7 @@
 
 ## Current CI reality
 - The fork initially had only `.github/workflows/prune.yml`.
-- `.github/workflows/foundation-ci.yml` adds a baseline Node 22/pnpm 10 trusted-runner job for built-in tests, lint, typecheck, production build and HTTP smoke.
+- `.github/workflows/foundation-ci.yml` adds a baseline Node 22/pnpm 10 GitHub-hosted validation job for contract tests, lint, typecheck, production build and HTTP smoke until the organization self-hosted runner is verified online under FND-002.
 - `pnpm test` starts with lightweight repository contract tests; these **do not replace** real domain unit tests, integration tests or browser E2E. FND-015 must add these and make them blocking for sensitive changes.
 - Never execute untrusted fork PR code on a privileged self-hosted runner. The workflow limits PR execution to same-repository heads; review any future runner/trigger expansion.
 - Self-hosted runner labels/group must be confirmed in GitHub Actions; if unavailable, document blocker and use an explicitly approved, isolated runner.
