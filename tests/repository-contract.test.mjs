@@ -22,7 +22,7 @@ test('core feature declarations remain present for prune compatibility', () => {
 test('agent delivery documents and staging guardrails are present', () => {
   assert.match(read('AGENTS.md'), /Modules/)
   assert.match(read('docs/ROADMAP.md'), /M0/)
-  assert.match(read('docs/COOLIFY.md'), /feat\\/vkn-saas-foundation/)
+  assert.ok(read('docs/COOLIFY.md').includes('feat/vkn-saas-foundation'))
   assert.match(read('docs/DEVELOPMENT_WORKFLOW.md'), /Coolify/)
 })
 
