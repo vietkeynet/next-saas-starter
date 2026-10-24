@@ -10,7 +10,7 @@
 > Initial entries below are PLANNED, not implemented. GitHub Issues #1–#16 now exist; Coolify preview still requires independent verification.
 
 ## P0 — foundation
-- [ ] **[FND-001 #1](https://github.com/vietkeynet/next-saas-starter/issues/1)** Inventory current baseline, architecture, license, risk and limitations; capture lint/typecheck/build evidence.
+- [ ] **[FND-001 #1](https://github.com/vietkeynet/next-saas-starter/issues/1)** Inventory current baseline, architecture, license, risk and limitations; capture lint/typecheck/build evidence. Audit: [FND-001 baseline inventory & security audit](docs/FND-001-BASELINE-AUDIT.md). Test/lint/typecheck passed; frozen install blocked by `ERR_PNPM_IGNORED_BUILDS`; build artifact exists but exit status uncaptured; local smoke: `/`, `/api/search`, `/robots.txt` 200; auth/dashboard routes 404 without configured services; PR review/merge and Coolify staging unverified.
 - [ ] **[FND-002 #2](https://github.com/vietkeynet/next-saas-starter/issues/2)** CI pipeline on branch, runner availability, smoke/unit tests, required status checks.
 - [ ] **[FND-003 #3](https://github.com/vietkeynet/next-saas-starter/issues/3)** Configure *isolated* Coolify preview + GitHub auto deploy on push; verify URL, SHA and logs.
 - [ ] **[FND-004 #4](https://github.com/vietkeynet/next-saas-starter/issues/4)** Use self-hosted PostgreSQL with Drizzle + Better Auth; safe migration/backup/secrets.
