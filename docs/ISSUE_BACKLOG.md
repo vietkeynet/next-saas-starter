@@ -1,6 +1,6 @@
 # Ready-to-create GitHub Issues — vietkeynet/next-saas-starter
 
-> GitHub API returned **HTTP 410: Issues disabled** on 2026-10-24. These tickets are the canonical durable backlog until repository administrator enables **Settings > General > Features > Issues**. Do not mark these as GitHub issues or claim URLs/numbers. Create each as a real GitHub Issue when enabled, replace ID references in README/TODO/roadmap, and preserve these detailed requirements.
+> GitHub Issues were enabled on 2026-10-24. All 16 tickets have been created as real GitHub Issues #1–#16. This file is their durable planning reference; use GitHub Issues for actual task state.
 > Priority execution: P0 foundation → P1 auth/admin/tenant → P2 SaaS/CMS/UX, with FND-015 and FND-016 running as release-quality tracks. All feature PRs target `feat/vkn-saas-foundation` and finish with test evidence and Coolify verification.
 
 ## Rules for ticket implementers
@@ -10,7 +10,7 @@
 - A ticket is DONE only after passing acceptance conditions, code review, PR merge to integration and preview verification.
 - If dependencies unresolved, mark blocked and work the next independent ticket. Don't silently skip acceptance.
 
-## FND-001 — [P0] Baseline inventory & security audit
+## FND-001 / [#1](https://github.com/vietkeynet/next-saas-starter/issues/1) — [P0] Baseline inventory & security audit
 
 **Dependencies:** None.
 
@@ -27,7 +27,7 @@
 - [ ] PR reviewed/merged and TODO updated.
 
 
-## FND-002 — [P0] Trusted CI on integration branch
+## FND-002 / [#2](https://github.com/vietkeynet/next-saas-starter/issues/2) — [P0] Trusted CI on integration branch
 
 **Dependencies:** FND-001.
 
@@ -44,7 +44,7 @@
 - [ ] PR reviewed/merged and TODO updated.
 
 
-## FND-003 — [P0] Coolify auto-deploy staging preview
+## FND-003 / [#3](https://github.com/vietkeynet/next-saas-starter/issues/3) — [P0] Coolify auto-deploy staging preview
 
 **Dependencies:** FND-002, FND-004 for authenticated preview.
 
@@ -61,7 +61,7 @@
 - [ ] PR reviewed/merged and TODO updated.
 
 
-## FND-004 — [P0] Self-hosted PostgreSQL & secret/migration discipline
+## FND-004 / [#4](https://github.com/vietkeynet/next-saas-starter/issues/4) — [P0] Self-hosted PostgreSQL & secret/migration discipline
 
 **Dependencies:** FND-001.
 
@@ -78,7 +78,7 @@
 - [ ] PR reviewed/merged and TODO updated.
 
 
-## FND-005 — [P1] Email/password, verification, reset, OAuth
+## FND-005 / [#5](https://github.com/vietkeynet/next-saas-starter/issues/5) — [P1] Email/password, verification, reset, OAuth
 
 **Dependencies:** FND-004.
 
@@ -95,7 +95,7 @@
 - [ ] PR reviewed/merged and TODO updated.
 
 
-## FND-006 — [P1] Real super-admin user management
+## FND-006 / [#6](https://github.com/vietkeynet/next-saas-starter/issues/6) — [P1] Real super-admin user management
 
 **Dependencies:** FND-005.
 
@@ -112,7 +112,7 @@
 - [ ] PR reviewed/merged and TODO updated.
 
 
-## FND-007 — [P1] Organizations, members, team invitations
+## FND-007 / [#7](https://github.com/vietkeynet/next-saas-starter/issues/7) — [P1] Organizations, members, team invitations
 
 **Dependencies:** FND-005.
 
@@ -129,7 +129,7 @@
 - [ ] PR reviewed/merged and TODO updated.
 
 
-## FND-008 — [P1] RBAC policy engine and strict tenant isolation
+## FND-008 / [#8](https://github.com/vietkeynet/next-saas-starter/issues/8) — [P1] RBAC policy engine and strict tenant isolation
 
 **Dependencies:** FND-006, FND-007.
 
@@ -146,7 +146,7 @@
 - [ ] PR reviewed/merged and TODO updated.
 
 
-## FND-009 — [P1] Account security, 2FA, audit and abuse prevention
+## FND-009 / [#9](https://github.com/vietkeynet/next-saas-starter/issues/9) — [P1] Account security, 2FA, audit and abuse prevention
 
 **Dependencies:** FND-005, FND-008.
 
@@ -163,7 +163,7 @@
 - [ ] PR reviewed/merged and TODO updated.
 
 
-## FND-010 — [P2] SaaS billing, entitlements, quota and VN payment adapter
+## FND-010 / [#10](https://github.com/vietkeynet/next-saas-starter/issues/10) — [P2] SaaS billing, entitlements, quota and VN payment adapter
 
 **Dependencies:** FND-007, FND-008.
 
@@ -180,7 +180,7 @@
 - [ ] PR reviewed/merged and TODO updated.
 
 
-## FND-011 — [P2] Email, notifications, API keys, outgoing webhooks and jobs
+## FND-011 / [#11](https://github.com/vietkeynet/next-saas-starter/issues/11) — [P2] Email, notifications, API keys, outgoing webhooks and jobs
 
 **Dependencies:** FND-008.
 
@@ -197,7 +197,7 @@
 - [ ] PR reviewed/merged and TODO updated.
 
 
-## FND-012 — [P2] CMS website: pages, posts, publishing and VI/EN SEO
+## FND-012 / [#12](https://github.com/vietkeynet/next-saas-starter/issues/12) — [P2] CMS website: pages, posts, publishing and VI/EN SEO
 
 **Dependencies:** FND-006, FND-008.
 
@@ -214,7 +214,7 @@
 - [ ] PR reviewed/merged and TODO updated.
 
 
-## FND-013 — [P2] Media library and MinIO/S3-compatible storage
+## FND-013 / [#13](https://github.com/vietkeynet/next-saas-starter/issues/13) — [P2] Media library and MinIO/S3-compatible storage
 
 **Dependencies:** FND-008.
 
@@ -231,7 +231,7 @@
 - [ ] PR reviewed/merged and TODO updated.
 
 
-## FND-014 — [P2] Reusable CRUD/grid/forms and sample tenant-scoped app
+## FND-014 / [#14](https://github.com/vietkeynet/next-saas-starter/issues/14) — [P2] Reusable CRUD/grid/forms and sample tenant-scoped app
 
 **Dependencies:** FND-008, FND-012 optional.
 
@@ -248,7 +248,7 @@
 - [ ] PR reviewed/merged and TODO updated.
 
 
-## FND-015 — [P0 release gate] Real automated test coverage, security & performance
+## FND-015 / [#15](https://github.com/vietkeynet/next-saas-starter/issues/15) — [P0 release gate] Real automated test coverage, security & performance
 
 **Dependencies:** FND-002, FND-008.
 
@@ -265,7 +265,7 @@
 - [ ] PR reviewed/merged and TODO updated.
 
 
-## FND-016 — [P0 release gate] Agent SDLC, PR automation, Coolify verification, upstream-sync and release
+## FND-016 / [#16](https://github.com/vietkeynet/next-saas-starter/issues/16) — [P0 release gate] Agent SDLC, PR automation, Coolify verification, upstream-sync and release
 
 **Dependencies:** FND-001..003.
 
@@ -283,9 +283,6 @@
 
 
 
-## Publishing procedure when Issues feature is enabled
-1. Confirm there are no existing duplicate issues and no issue numbers are fabricated.
-2. Create a GitHub Issue for each FND ID preserving full title/tasks/acceptance criteria.
-3. Update `TODO.md` and `docs/ROADMAP.md` with actual `#NN` numbers and issue URLs.
-4. Optionally add labels (`priority/P0`, `priority/P1`, `priority/P2`, `area/auth`, `area/admin`, `area/coolify`) only after verifying they exist or creating them through authorized repository settings.
-5. Open feature PRs only after a real feature change exists; never create empty placeholder PRs.
+## Tracking real GitHub Issues
+
+All tickets exist at [GitHub Issues](https://github.com/vietkeynet/next-saas-starter/issues), numbered #1 through #16. Use these IDs, preserve acceptance criteria, and close only after reviewed PR merge and verified staging. Maintain `TODO.md` and roadmap links if ticket scope changes.
