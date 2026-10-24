@@ -3,7 +3,7 @@
 ## Operating rules
 - Work only on `vietkeynet/next-saas-starter`; protect original upstream and branch `main`.
 - Long-lived integration branch: `feat/vkn-saas-foundation`. Feature branch: `feature/FND-XXX-short-name` based on latest integration HEAD.
-- Work from a real issue if enabled; otherwise backlog ticket `docs/ISSUE_BACKLOG.md`.
+- GitHub Issues #1–#16 are enabled and authoritative for status; use `docs/ISSUE_BACKLOG.md` to consult detailed acceptance criteria.
 - Do not imply any action was performed if access, CI runner, Coolify MCP or credentials are missing.
 - Do not copy private Pro version source; implement missing functionality independently using public framework APIs.
 - No blind retry loops, auto-merge to main, secret exposure or destructive DB migration without permission.
