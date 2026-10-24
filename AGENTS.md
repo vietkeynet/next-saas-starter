@@ -40,4 +40,4 @@ Check with `pnpm modules:prune <module>`: without `--yes` it only prints what it
 - Coolify staging tracks **only** `feat/vkn-saas-foundation`. A push should trigger GitHub webhook auto-deploy after configured; verify commit SHA, live URL and deployment logs. Never assume a Coolify MCP exists without discovering it.
 - Do not commit tokens or passwords, auto-merge to main, remove project data, change production domains or upgrade production DB without explicit owner approval.
 - PR description uses `.github/pull_request_template.md`. After merged feature PR and verified staging, update `TODO.md`, docs and GitHub issue with evidence.
-- If blocked (Issues disabled, runner offline, Coolify MCP unavailable), report the blocker and continue a safe independent item instead of inventing progress.
+- GitHub Issues #1–#16 are enabled; work from an actual linked Issue rather than a backlog placeholder. If blocked (runner offline or Coolify MCP unavailable), report and continue a safe independent item instead of inventing progress.
