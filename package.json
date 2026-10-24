@@ -15,7 +15,8 @@
     "db:push": "drizzle-kit push",
     "db:studio": "drizzle-kit studio",
     "modules:prune": "node scripts/prune.ts",
-    "auth:generate": "auth generate --config lib/auth/server.ts --output lib/db/schema/auth.ts --yes && prettier --write lib/db/schema/auth.ts"
+    "auth:generate": "auth generate --config lib/auth/server.ts --output lib/db/schema/auth.ts --yes && prettier --write lib/db/schema/auth.ts",
+    "test": "node --test tests/*.test.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.8.0",
