@@ -44,8 +44,8 @@
 ## Current setup blockers
 - **GitHub Issues: ENABLED** — #1–#16 created on 2026-10-24. Track actual progress and blockers in each linked issue; do not close until implemented, reviewed and staging-verified.
 - **Coolify MCP not available to this ChatGPT session** — configure preview through agent environment with connected Coolify MCP or Coolify dashboard; never claim webhook/deployment succeeded without live verification.
-- **No baseline run yet** — current branch CI must prove build/test; do not report green prematurely.
+- **CI status** — GitHub Actions was triggered; existing Prune initially failed due an unmarked changelog link and a React lint error, both patched on the integration branch. Foundation CI initially queued without an available self-hosted runner; validation temporarily moved to GitHub-hosted runners, and all checks require fresh evidence before marking DONE.
 - **Known Free limitations** — mock admin, Google-only sign-in, Pro preview screens, MDX not CMS.
 
 ## Progress log
-- 2026-10-24: Created `feat/vkn-saas-foundation`; documented roadmap and agent process; GitHub Issues #1–#16 now active. Workflow/preview not yet confirmed green.
+- 2026-10-24: Created `feat/vkn-saas-foundation`; roadmap/agent workflow and GitHub Issues #1–#16 active; draft integration PR [#17](https://github.com/vietkeynet/next-saas-starter/pull/17). Initial prune/lint fixes landed; CI rerun is required. Coolify preview not verified.
