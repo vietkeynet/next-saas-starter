@@ -22,7 +22,7 @@ Reusable, self-hosted Next.js/TypeScript/PostgreSQL starter with three real surf
 ### M0 — Bootstrap and reproducible preview (P0)
 Tickets: [FND-001..004](https://github.com/vietkeynet/next-saas-starter/issues?q=is%3Aissue+is%3Aopen+FND-)
 - Audit dependency/security/Free-versus-demo scope and record existing behavior.
-- Stand up trusted push CI: install, static contract tests, lint, typecheck, production build, HTTP smoke; preserve prune CI.
+- Stand up push CI: install, static contract tests, lint, typecheck, production build, HTTP smoke; preserve prune CI. Current GitHub-hosted validation is temporary until the preferred self-hosted runner is confirmed online and authorized.
 - Verify isolated Coolify preview from `feat/vkn-saas-foundation`, GitHub webhook on push, per-commit deploy logs and preview URL.
 - Support self-hosted PostgreSQL, migration plan, least-privileged users, secret handling and runtime validation.
 **Exit:** clean build and smoke, reproducible migrations, working restricted preview with commit SHA verified. If unavailable, mark blocker; do not declare done.
