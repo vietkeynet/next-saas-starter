@@ -22,9 +22,10 @@ concurrency:
 jobs:
   validate:
     name: Unit contract + lint + typecheck + production build + HTTP smoke
-    # Only execute trusted same-repo pull requests on an organization self-hosted runner.
+    # Use GitHub-hosted CI until the org self-hosted runner is confirmed online for this repo (FND-002).
+    # Do not put secrets in this job; external PRs are excluded until the security policy is reviewed.
     if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
-    runs-on: [self-hosted, Linux]
+    runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
       CI: 'true'
