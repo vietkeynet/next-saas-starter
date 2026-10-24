@@ -1,0 +1,37 @@
+name: Feature implementation
+description: Scope one deliverable from docs/ISSUE_BACKLOG.md with testable acceptance
+title: "[FND-XXX] "
+labels: []
+body:
+  - type: input
+    id: ticket
+    attributes:
+      label: Backlog ticket
+      description: Use FND-XXX from docs/ISSUE_BACKLOG.md
+      placeholder: FND-005
+    validations:
+      required: true
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope and desired behavior
+      description: Real product behavior (not Pro mock preview)
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies and blockers
+      description: List prerequisite FND IDs and GitHub issue URLs
+  - type: textarea
+    id: acceptance
+    attributes:
+      label: Acceptance criteria / Definition of Done
+      description: Include positive and negative tests, tenant/RBAC checks, CI and staging evidence
+    validations:
+      required: true
+  - type: textarea
+    id: testing
+    attributes:
+      label: Required tests and rollout
+      description: CI, E2E, migrations, rollback and Coolify branch preview
