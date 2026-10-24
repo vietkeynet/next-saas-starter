@@ -15,10 +15,11 @@ Observed on this branch; these are local command outcomes, not hosted CI claims:
 | `pnpm test` | PASS | Node test runner: 4 tests, 4 pass, 0 fail, 0 skipped; duration 96.907832 ms. Repository contract tests only, not domain or E2E coverage. |
 | `pnpm lint` | PASS | `eslint` exited successfully; no diagnostics. |
 | `pnpm typecheck` | PASS | `tsc --noEmit` exited successfully. |
-| `pnpm build` | Build artifact observed; exit status UNCAPTURED | Next.js 16.3.4/Turbopack reached TypeScript completion and `.next/BUILD_ID` exists; command final exit code was not captured. Do not report build as verified PASS. |
-| Production HTTP smoke | MIXED (local production server) | Started with detached `setsid sh -c 'pnpm start ...'` session and curled while server was alive, then killed recorded PID. `/` 200, `/api/search` 200, `/robots.txt` 200; `/login`, `/register`, `/dashboard` 404 because required local services/features are not configured. This is not authenticated-route E2E or staging evidence. |
+| `pnpm build` | PASS (CI) | GitHub Foundation CI on PR head `47c317f7d1fb616a78fa815290d42612dccb4603` succeeded at `https://github.com/vietkeynet/next-saas-starter/actions/runs/40143322800/job/121019409349`; local rerun produced full Next.js route report and command exit 0 (exit status reported by job). |
+| `pnpm modules:prune docs blog changelog` | PASS | Dry run; marker lines suppress all FND-001 audit route false positives. No files changed. |
+| Production HTTP smoke | MIXED (local production server) | Detached local `pnpm start`; `/`, `/api/search`, `/robots.txt` returned 200; `/login`, `/register`, `/dashboard` returned 404 due missing local env services/features. Server stopped by recorded PID; this is not authenticated-route E2E or staging evidence. |
 | E2E | NOT RUN | No browser/E2E test runner or script observed in `package.json`. |
-| Coolify preview | BLOCKED / UNVERIFIED | Coolify MCP access unavailable/rejected in this environment; no staging URL, deployment SHA, or runtime evidence. No production access used. |
+| Coolify preview | BLOCKED / UNVERIFIED | No deployment endpoint/credentials available; no staging URL, deployment SHA, or runtime evidence. No production access used. |
 
 Do not run `pnpm db:migrate`, `pnpm db:push`, or connect to a non-isolated database as part of this audit. Reproduction commands are from repository root.
 
@@ -43,11 +44,11 @@ Route groups are omitted from public URLs. Dynamic segments shown literally. `ap
 | `/pricing` | `app/(marketing)/pricing/page.tsx` | Billing feature route |
 | `/privacy` | `app/(marketing)/privacy/page.tsx` | Legal MDX |
 | `/terms` | `app/(marketing)/terms/page.tsx` | Legal MDX |
-| `/blog` | `app/(marketing)/blog/page.tsx` | MDX blog list |
-| `/blog/[slug]` | `app/(marketing)/blog/[slug]/page.tsx` | MDX article |
-| `/changelog` | `app/(marketing)/changelog/page.tsx` | MDX list |
-| `/changelog/[slug]` | `app/(marketing)/changelog/[slug]/page.tsx` | MDX entry |
-| `/docs/[[...slug]]` | `app/(docs)/docs/[[...slug]]/page.tsx` | Fumadocs optional catch-all |
+| `/blog` | `app/(marketing)/blog/page.tsx` | MDX blog list | <!-- module:blog -->
+| `/blog/[slug]` | `app/(marketing)/blog/[slug]/page.tsx` | MDX article | <!-- module:blog -->
+| `/changelog` | `app/(marketing)/changelog/page.tsx` | MDX list | <!-- module:changelog -->
+| `/changelog/[slug]` | `app/(marketing)/changelog/[slug]/page.tsx` | MDX entry | <!-- module:changelog -->
+| `/docs/[[...slug]]` | `app/(docs)/docs/[[...slug]]/page.tsx` | Fumadocs optional catch-all | <!-- module:docs -->
 | `/login` | `app/(auth)/login/page.tsx` | Auth UI |
 | `/register` | `app/(auth)/register/page.tsx` | Google sign-up UX; email sign-in offered as Pro |
 | `/dashboard` | `app/(app)/dashboard/page.tsx` | Auth + organization session guard |
