@@ -80,7 +80,7 @@ No critical/high issue evidenced by this limited static baseline; not a penetrat
 | Severity | Finding / evidence | Follow-up |
 |---|---|---|
 | Medium — deployment risk | `modules/admin/preview-actions.ts` allows signed-in users to choose a display-only admin role when `DEMO_MODE=true`; `components/admin/demo-banner.tsx` exposes switch. It is not used for database/API authorization, and `/api/auth/admin/*` is denied. `.env.example` says keep it unset. | Keep `DEMO_MODE` unset on public deployments; test role boundaries in FND-006/FND-015. |
-| Medium — platform constraint | Neon serverless DB driver and pooled/direct URLs (`lib/db/index.ts`, `drizzle.config.ts`, `.env.example`) constrain self-hosting; migrations need deliberate direct staging connection. | FND-004: validate isolated PostgreSQL adapter, transactions, fresh migration, backup and rollback before claiming support. |
+| Medium — compatibility constraint (not a vulnerability finding) | Neon serverless DB driver and pooled/direct URLs (`lib/db/index.ts`, `drizzle.config.ts`, `.env.example`) constrain self-hosting; migrations need deliberate direct staging connection. | FND-004: validate isolated PostgreSQL adapter, transactions, fresh migration, backup and rollback before claiming support. |
 | Medium — coverage gap | Existing tests are four repository contract tests; no authorization/tenant integration or browser E2E suite. | FND-015: add domain tests and negative authorization/E2E before release. |
 | Low — claim clarity | Several authenticated screens render static Pro preview datasets; CMS content is MDX. | Keep feature claims explicit; implement separately in assigned issues. |
 
@@ -88,4 +88,4 @@ No secret values are included. No database or production resource accessed.
 
 ## Status boundary
 
-FND-001 remains in progress until build/HTTP evidence is complete, PR reviewed/merged and staging verified. Do not mark ticket done or close issue before review and staging acceptance.
+Inventory, test/lint/typecheck evidence and local public HTTP subset are recorded. Build final exit status remains uncaptured; staging, PR review and merge remain outstanding. Keep FND-001 unchecked and do not close issue before acceptance and staging verification.
