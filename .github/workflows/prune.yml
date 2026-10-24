@@ -4,7 +4,7 @@ name: Prune
 
 on:
   push:
-    branches: [main]
+    branches: [main, feat/vkn-saas-foundation]
   pull_request:
 
 jobs:
