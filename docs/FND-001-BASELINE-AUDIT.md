@@ -2,12 +2,12 @@
 
 **Repository:** `vietkeynet/next-saas-starter`  
 **Audited ref:** `feature/FND-001-baseline-inventory-security-audit`, based on `origin/feat/vkn-saas-foundation` at `ed940242262d46efe7c2daf3b5d43d922335910c` (fetched 2026-10-24).  
-**Scope:** source inventory and local baseline only; no database connection or staging deployment performed.  
+**Scope:** source inventory and local baseline only; no database connection or staging deployment performed. Evidence table separates commands run locally from hosted CI results.
 **Attribution:** Minh Tuấn — WhatsApp: 0912537003 — Email: vietkeynet@gmail.com
 
 ## Evidence and commands
 
-Observed on this branch; these are local command outcomes, not hosted CI claims:
+**Local commands and hosted CI evidence are distinguished below; CI success does not establish runner-policy compliance.**
 
 | Command | Result | Evidence |
 |---|---|---|
@@ -15,9 +15,9 @@ Observed on this branch; these are local command outcomes, not hosted CI claims:
 | `pnpm test` | PASS | Node test runner: 4 tests, 4 pass, 0 fail, 0 skipped; duration 96.907832 ms. Repository contract tests only, not domain or E2E coverage. |
 | `pnpm lint` | PASS | `eslint` exited successfully; no diagnostics. |
 | `pnpm typecheck` | PASS | `tsc --noEmit` exited successfully. |
-| `pnpm build` | PASS (CI) | GitHub Foundation CI on PR head `47c317f7d1fb616a78fa815290d42612dccb4603` succeeded at `https://github.com/vietkeynet/next-saas-starter/actions/runs/40143322800/job/121019409349`; local rerun produced full Next.js route report and command exit 0 (exit status reported by job). |
-| `pnpm modules:prune docs blog changelog` | PASS | Dry run; marker lines suppress all FND-001 audit route false positives. No files changed. |
-| Production HTTP smoke | MIXED (local production server) | Detached local `pnpm start`; `/`, `/api/search`, `/robots.txt` returned 200; `/login`, `/register`, `/dashboard` returned 404 due missing local env services/features. Server stopped by recorded PID; this is not authenticated-route E2E or staging evidence. |
+| `pnpm build` (local) | PASS | Local `pnpm build` completed; explicit shell capture recorded `BUILD_EXIT=0`. Hosted Foundation CI also passed on PR head `e0e4a2a17709a275c57694ab5e4cbae795a7a813` ([run](https://github.com/vietkeynet/next-saas-starter/actions/runs/40144252196)). Hosted runner used `ubuntu-latest`, not required `[self-hosted, Linux, X64, ci]`; CI pass does not verify LXC209 eligibility. |
+| `pnpm modules:prune docs blog changelog` (local dry-run) | PASS | No dead route links reported; no files changed. |
+| Local production HTTP smoke | MIXED | Detached local `pnpm start`; `/`, `/api/search`, `/robots.txt` returned 200; `/login`, `/register`, `/dashboard` returned 404 because local environment services/features were unconfigured. Server stopped by recorded PID. Not authenticated E2E or staging evidence. |
 | E2E | NOT RUN | No browser/E2E test runner or script observed in `package.json`. |
 | Coolify preview | BLOCKED / UNVERIFIED | No deployment endpoint/credentials available; no staging URL, deployment SHA, or runtime evidence. No production access used. |
 
@@ -89,4 +89,4 @@ No secret values are included. No database or production resource accessed.
 
 ## Status boundary
 
-Inventory, test/lint/typecheck evidence and local public HTTP subset are recorded. Build final exit status remains uncaptured; staging, PR review and merge remain outstanding. Keep FND-001 unchecked and do not close issue before acceptance and staging verification.
+Inventory, test/lint/typecheck/build evidence and local public HTTP subset are recorded. The local build completed with captured exit 0; hosted CI also passed on current PR head, but used a noncompliant GitHub-hosted runner and does not establish LXC209 eligibility. Staging, formal PR review and merge remain outstanding. Keep FND-001 unchecked until acceptance and staging verification.
